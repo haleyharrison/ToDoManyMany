@@ -11,12 +11,12 @@
 
 <h4>Add a task to this category:</h4>
 
-<form action='/add_tasks' method='post'>
+<form action='/add_category' method='post'>
     <input id="category_id" name="category_id" type="hidden" value="$category.getId()">
-    <label for="task_id">Select a task</label>
-    <select id='task_id' name='task_id' type='text'>
-      #foreach($task in $allTasks)
-        <option value="$task.getId()"> $task.getDescription() </option>
+    <label for="t_id">Select a category</label>
+    <select id='category_id' name='category_id' type='text'>
+      #foreach($category in $allCategories)
+        <option value="$category.getId()"> $category.getDescription() </option>
       #end
     </select>
     <button type='submit'>Add task</button>

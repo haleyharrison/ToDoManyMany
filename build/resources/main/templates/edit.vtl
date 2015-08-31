@@ -1,7 +1,7 @@
-<h1>Edit $category.getDescription()</h1>
+<h1>remove a task from $category.getDescription()</h1>
 
 <p>Remove tasks from this category</p>
-<form action='/categories/$category.getId()/change' method='post'>
+<form action='/categories/change' method='post'>
     <input id="category_id" name="category_id" type="hidden" value="$category.getId()">
     <label for="task_id">remove a task</label>
     <select id='task_id' name='task_id' type='text'>
@@ -9,5 +9,5 @@
         <option value="$task.getId()"> $task.getDescription() </option>
       #end
     </select>
-    <button type='submit'>change task</button>
+    <button type='submit'>remove task from category '$category.getDescription()'</button>
 </form>

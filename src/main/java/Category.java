@@ -65,15 +65,17 @@ public class Category {
     }
   }
 
-  public void deleteTask(Task task) {
+  public void dissociateTask(Task task) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM categories_tasks (category_id, task_id) VALUES (:category_id, :task_id)";
+      String sql = "DELETE FROM categories_tasks WHERE category_id =:category_id AND task_id =:task_id";
       con.createQuery(sql)
         .addParameter("category_id", this.getId())
         .addParameter("task_id", task.getId())
         .executeUpdate();
     }
   }
+
+  //This doesn't delete a task, it just disassociates a task from a category
 
   public ArrayList<Task> getTasks() {
     try(Connection con = DB.sql2o.open()){

@@ -91,7 +91,7 @@ public class App {
       return null;
     });
 
-    get("categories/:category_id/edit", (request, response) -> {
+    get("/categories/:category_id/edit", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int categoryId = Integer.parseInt(request.params("category_id"));
       Category category = Category.find(categoryId);
@@ -100,14 +100,30 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/categories/:category_id/change", (request,response) -> {
-      // int categoryId = Integer.parseInt(request.queryParams("category_id"));
-      // int taskId = Integer.parseInt(request.queryParams("task_id"));
-      // Category category = Category.find(categoryId);
-      // Task task = Task.find(taskId);
-      // category.deleteTask(task);
+    post("/categories/change", (request, response) -> {
+      int categoryId = Integer.parseInt(request.queryParams("category_id"));
+      int taskId = Integer.parseInt(request.queryParams("task_id"));
+      Category category = Category.find(categoryId);
+      Task task = Task.find(taskId);
+      category.dissociateTask(task);
       response.redirect("/categories/" + categoryId);
       return null;
+    });
+
+    post("/tasks_delete", (request, response) -> {
+    int taskId = Integer.parseInt(request.queryParams("task_id"));
+    Task task = Task.find(taskId);
+    task.delete();
+    response.redirect("/tasks");
+    return null;
+    });
+
+    post("/categories_delete", (request, response) -> {
+    int categoryId = Integer.parseInt(request.queryParams("category_id"));
+    Category category = Category.find(categoryId);
+    category.delete();
+    response.redirect("/categories");
+    return null;
     });
   }
 }

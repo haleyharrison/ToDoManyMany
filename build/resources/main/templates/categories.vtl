@@ -13,4 +13,16 @@
     <li><a href="/categories/$category.getId()">$category.getDescription()</a></li>
   #end
 </ul>
+
+<form action='/categories_delete' method='post'>
+    <label for="category_id">Select a category</label>
+    <select id='category_id' name='category_id' type='text'>
+      #foreach($category in $categories)
+        <option value="$category.getId()"> $category.getDescription() </option>
+      #end
+    </select>
+    <button type='submit'>Delete Category</button>
+</form>
+
+
 <p><a href='/'>Home</a></p>
