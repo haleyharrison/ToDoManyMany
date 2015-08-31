@@ -111,19 +111,19 @@ public class App {
     });
 
     post("/tasks_delete", (request, response) -> {
-    int taskId = Integer.parseInt(request.queryParams("task_id"));
-    Task task = Task.find(taskId);
-    task.delete();
-    response.redirect("/tasks");
-    return null;
+      int taskId = Integer.parseInt(request.queryParams("task_id"));
+      Task task = Task.find(taskId);
+      task.delete();
+      response.redirect("/tasks");
+      return null;
     });
 
     post("/categories_delete", (request, response) -> {
-    int categoryId = Integer.parseInt(request.queryParams("category_id"));
-    Category category = Category.find(categoryId);
-    category.delete();
-    response.redirect("/categories");
-    return null;
+      int categoryId = Integer.parseInt(request.queryParams("category_id"));
+      Category category = Category.find(categoryId);
+      category.delete();
+      response.redirect("/categories");
+      return null;
     });
   }
 }

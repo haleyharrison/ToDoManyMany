@@ -61,6 +61,18 @@ public class AppTest extends FluentTest{
     assertThat(pageSource()).contains("eat nachos");
   }
 
+  // @Test
+  // public void assignTaskToCatWorks(){
+  //   Category myCategory = new Category("things to do with nachos");
+  //   myCategory.save();
+  //   Task myTask = new Task("eat nachos");
+  //   myTask.save();
+  //   String path = String.format ("http://localhost:4567/categories/%d", myCategory.getId());
+  //   goTo(path);
+  //   click("option", with("task_id").equalTo("eat nachos"));
+  //   assertThat(pageSource()).contains("eat nachos");
+  // }
+
 
 
 
