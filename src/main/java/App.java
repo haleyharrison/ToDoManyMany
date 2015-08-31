@@ -110,6 +110,8 @@ public class App {
       return null;
     });
 
+ //dissociate is separate from delete in that it just stops the task and category from being related
+
     post("/tasks_delete", (request, response) -> {
       int taskId = Integer.parseInt(request.queryParams("task_id"));
       Task task = Task.find(taskId);
