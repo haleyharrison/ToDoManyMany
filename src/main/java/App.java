@@ -90,5 +90,24 @@ public class App {
       response.redirect("/tasks/" + taskId);
       return null;
     });
+
+    get("categories/:category_id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int categoryId = Integer.parseInt(request.params("category_id"));
+      Category category = Category.find(categoryId);
+      model.put("category", category);
+      model.put ("template", "templates/edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/categories/:category_id/change", (request,response) -> {
+      // int categoryId = Integer.parseInt(request.queryParams("category_id"));
+      // int taskId = Integer.parseInt(request.queryParams("task_id"));
+      // Category category = Category.find(categoryId);
+      // Task task = Task.find(taskId);
+      // category.deleteTask(task);
+      response.redirect("/categories/" + categoryId);
+      return null;
+    });
   }
 }

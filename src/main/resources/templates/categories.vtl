@@ -8,9 +8,9 @@
 
   <button type="submit">Add category</button>
 </form>
-
-#foreach ($category in $categories)
-  <li><a href="/categories/$category.getId()">$category.getDescription()</a></li>
-#end
-
+<ul>
+  #foreach ($category in $categories)
+    <li><a href="/categories/$category.getId()">$category.getDescription()</a></li>
+  #end
+</ul>
 <p><a href='/'>Home</a></p>

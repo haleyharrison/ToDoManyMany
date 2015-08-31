@@ -65,6 +65,16 @@ public class Category {
     }
   }
 
+  public void deleteTask(Task task) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM categories_tasks (category_id, task_id) VALUES (:category_id, :task_id)";
+      con.createQuery(sql)
+        .addParameter("category_id", this.getId())
+        .addParameter("task_id", task.getId())
+        .executeUpdate();
+    }
+  }
+
   public ArrayList<Task> getTasks() {
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT task_id FROM categories_tasks WHERE category_id = :category_id";

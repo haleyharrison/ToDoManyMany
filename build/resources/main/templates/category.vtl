@@ -1,10 +1,10 @@
-<h1>$category.getName()</h1>
+<h1>$category.getDescription()</h1>
 
 #if($category.getTasks())
   <p>Here are the tasks for this category:</p>
   <ul>
     #foreach($task in $category.getTasks())
-      <li>$task.getDescription()<li>
+      <li>$task.getDescription()</li>
     #end
   </ul>
 #end
